@@ -1,0 +1,30 @@
+.cardlist-outer-container {
+  margin: 2rem 10rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardlist-header {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cardlist-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding-left: 1.5rem;
+  flex: 1;
+}
+
+.cardlist-header p {
+  text-align: right;
+  margin: 0;
+  padding: 1.9rem 2rem 0 0;
+  flex: 1;
+  cursor: pointer;
+}
+
+.cardlist-inner-container {
+  display: flex;
+  justify-content: space-evenly;
+}

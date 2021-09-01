@@ -1,8 +1,14 @@
 import './App.css';
+import CardList from './components/CardList';
 import Header from './components/Header/Header';
 
 function App() {
-  return <Header />;
+  return (
+    <>
+      <Header />
+      <CardList />
+    </>
+  );
 }
 
 export default App;
