@@ -16,8 +16,9 @@
   flex: 1;
 }
 
-.cardlist-header p {
+.cardlist-header a {
   text-align: right;
+  text-decoration: none;
   margin: 0;
   padding: 1.5rem 2.1rem 0 0;
   flex: 1;
@@ -26,5 +27,6 @@
 
 .cardlist-inner-container {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-evenly;
 }
