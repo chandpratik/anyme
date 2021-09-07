@@ -10,7 +10,12 @@ export const CardGrid = ({ response, loading, cardListTitle }) => {
       <div className="cardgrid-inner-container">
         {!loading &&
           response.map(({ title, image_url, mal_id }) => (
-            <Card key={mal_id} title={title} image_url={image_url} />
+            <Card
+              key={mal_id}
+              title={title}
+              image_url={image_url}
+              id={mal_id}
+            />
           ))}
       </div>
     </div>

@@ -15,7 +15,12 @@ export const CardList = ({ cardListTitle, loading, response, slug }) => {
           response
             .filter((_, idx) => idx < 5)
             .map(({ title, image_url, mal_id }) => (
-              <Card key={mal_id} title={title} image_url={image_url} />
+              <Card
+                key={mal_id}
+                title={title}
+                image_url={image_url}
+                id={mal_id}
+              />
             ))}
       </div>
     </div>

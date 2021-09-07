@@ -4,16 +4,20 @@ import useFetch from '../hooks/useFetch';
 
 export const Home = () => {
   const { response: upcoming, loading: upcomingLoading } = useFetch(
-    'https://api.jikan.moe/v3/top/anime/1/upcoming'
+    'https://api.jikan.moe/v3/top/anime/1/upcoming',
+    false
   );
   const { response: airing, loading: airingLoading } = useFetch(
-    'https://api.jikan.moe/v3/top/anime/1/airing'
+    'https://api.jikan.moe/v3/top/anime/1/airing',
+    false
   );
   const { response: allTime, loading: allTimeLoading } = useFetch(
-    'https://api.jikan.moe/v3/top/anime/1/tv'
+    'https://api.jikan.moe/v3/top/anime/1/tv',
+    false
   );
   const { response: movies, loading: moviesLoading } = useFetch(
-    'https://api.jikan.moe/v3/top/anime/1/movie'
+    'https://api.jikan.moe/v3/top/anime/1/movie',
+    false
   );
 
   return (

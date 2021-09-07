@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-const useFetch = url => {
+const useFetch = (url, singleResource) => {
   const [response, setResponse] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
@@ -9,8 +9,13 @@ const useFetch = url => {
     const fetchData = async () => {
       try {
         const res = await fetch(url);
-        const { top: data } = await res.json();
-        setResponse(data);
+        if (singleResource) {
+          const data = await res.json();
+          setResponse(data);
+        } else {
+          const { top: data } = await res.json();
+          setResponse(data);
+        }
         setLoading(false);
       } catch (error) {
         setError(error);
