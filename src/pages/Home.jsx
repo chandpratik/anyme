@@ -1,8 +1,11 @@
-import React from 'react';
-import { CardList } from '../components';
+import React, { useState } from 'react';
+import { CardGrid, CardList, SearchBar } from '../components';
 import useFetch from '../hooks/useFetch';
 
 export const Home = () => {
+  const [searchResults, setSearchResults] = useState(null);
+  const [loading, setLoading] = useState(false);
+
   const { response: upcoming, loading: upcomingLoading } = useFetch(
     'https://api.jikan.moe/v3/top/anime/1/upcoming',
     false
@@ -22,30 +25,41 @@ export const Home = () => {
 
   return (
     <>
-      <CardList
-        cardListTitle="POPULAR THIS SEASON"
-        response={airing}
-        loading={airingLoading}
-        slug="airing"
-      />
-      <CardList
-        cardListTitle="POPULAR UPCOMING"
-        response={upcoming}
-        loading={upcomingLoading}
-        slug="upcoming"
-      />
-      <CardList
-        cardListTitle="ALL TIME POPULAR"
-        response={allTime}
-        loading={allTimeLoading}
-        slug="tv"
-      />
-      <CardList
-        cardListTitle="ALL TIME POPULAR MOVIES"
-        response={movies}
-        loading={moviesLoading}
-        slug="movie"
-      />
+      <SearchBar setSearchResults={setSearchResults} setLoading={setLoading} />
+      {searchResults ? (
+        <CardGrid
+          response={searchResults}
+          loading={loading}
+          cardListTitle="Search Results"
+        />
+      ) : (
+        <>
+          <CardList
+            cardListTitle="POPULAR THIS SEASON"
+            response={airing}
+            loading={airingLoading}
+            slug="airing"
+          />
+          <CardList
+            cardListTitle="POPULAR UPCOMING"
+            response={upcoming}
+            loading={upcomingLoading}
+            slug="upcoming"
+          />
+          <CardList
+            cardListTitle="ALL TIME POPULAR"
+            response={allTime}
+            loading={allTimeLoading}
+            slug="tv"
+          />
+          <CardList
+            cardListTitle="ALL TIME POPULAR MOVIES"
+            response={movies}
+            loading={moviesLoading}
+            slug="movie"
+          />
+        </>
+      )}
     </>
   );
 };
