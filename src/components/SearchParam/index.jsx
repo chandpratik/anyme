@@ -1,7 +1,7 @@
 import React from 'react';
 import './SearchParam.css';
 
-export const SearchParam = ({ title, genre, handleClick, data, setData }) => {
+export const SearchParam = ({ title, genre, handleClick, data, action }) => {
   return (
     <div className="search-param">
       <div className="search-param-title">{title}</div>
@@ -9,10 +9,7 @@ export const SearchParam = ({ title, genre, handleClick, data, setData }) => {
       <div className="search-dropdown">
         <ul>
           {genre.map(({ id, value, queryParam }) => (
-            <li
-              onClick={() => handleClick(value, queryParam, setData)}
-              key={id}
-            >
+            <li onClick={() => handleClick(value, queryParam, action)} key={id}>
               {value}
             </li>
           ))}

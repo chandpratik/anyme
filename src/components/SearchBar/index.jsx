@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+
 import './SearchBar.css';
 import {
   genreParams,
@@ -6,25 +8,26 @@ import {
   sortParam,
   ratingParam,
 } from '../../constant/filterParam';
+import {
+  setGenre,
+  setSortBy,
+  setOrderBy,
+  setRating,
+} from '../../redux/searchParams/searchParamsActions';
 import { SearchParam } from '../SearchParam';
 
 export const SearchBar = ({ setSearchResults, setLoading }) => {
-  const [input, setInput] = useState('');
-  const [genreData, setGenreData] = useState({
-    value: '',
-  });
-  const [orderData, setOrderData] = useState({
-    value: '',
-  });
-  const [sortData, setSortData] = useState({
-    value: '',
-  });
-  const [ratingData, setRatingData] = useState({
-    value: '',
-  });
+  const genre = useSelector(state => state.searchParam.genre);
+  const orderBy = useSelector(state => state.searchParam.orderBy);
+  const sortBy = useSelector(state => state.searchParam.sortBy);
+  const rating = useSelector(state => state.searchParam.rating);
 
-  const handleClick = (value, queryParam, setData) => {
-    setData({ value, queryParam });
+  const dispatch = useDispatch();
+
+  const [input, setInput] = useState('');
+
+  const handleClick = (value, queryParam, action) => {
+    dispatch(action(value, queryParam));
   };
 
   const handleChange = e => {
@@ -37,10 +40,10 @@ export const SearchBar = ({ setSearchResults, setLoading }) => {
       setLoading(true);
       const response = await fetch(
         `https://api.jikan.moe/v3/search/anime?q=${input}&page=1${
-          genreData.value !== '' ? `&genre=${genreData.queryParam}` : ''
-        }${orderData.value !== '' ? `&order_by=${orderData.queryParam}` : ''}${
-          sortData.value !== '' ? `&sort=${sortData.queryParam}` : ''
-        }${ratingData.value !== '' ? `&rated=${ratingData.queryParam}` : ''}`
+          genre.queryParam !== '' ? `&genre=${genre.queryParam}` : ''
+        }${orderBy.queryParam !== '' ? `&order_by=${orderBy.queryParam}` : ''}${
+          sortBy.queryParam !== '' ? `&sort=${sortBy.queryParam}` : ''
+        }${rating.queryParam !== '' ? `&rated=${rating.queryParam}` : ''}`
       );
       const { results: data } = await response.json();
       console.log(data);
@@ -68,29 +71,29 @@ export const SearchBar = ({ setSearchResults, setLoading }) => {
           genre={genreParams}
           handleClick={handleClick}
           title="Genre"
-          data={genreData}
-          setData={setGenreData}
+          data={genre}
+          action={setGenre}
         />
         <SearchParam
           genre={orderParam}
           handleClick={handleClick}
           title="Order By"
-          data={orderData}
-          setData={setOrderData}
+          data={orderBy}
+          action={setOrderBy}
         />
         <SearchParam
           genre={sortParam}
           handleClick={handleClick}
           title="Sort"
-          data={sortData}
-          setData={setSortData}
+          data={sortBy}
+          action={setSortBy}
         />
         <SearchParam
           genre={ratingParam}
           handleClick={handleClick}
           title="Rated"
-          data={ratingData}
-          setData={setRatingData}
+          data={rating}
+          action={setRating}
         />
         <div className="search-button-container">
           <button className="search-button" onClick={handleSubmit}>
