@@ -12,7 +12,6 @@ export function* fetchAiringAnimeAsync() {
     yield put(fetchPopularAnimeMovieSuccess(response.data.top));
   } catch (error) {
     yield put(fetchPopularAnimeMovieFailure(error.message));
-    console.log(error);
   }
 }
 

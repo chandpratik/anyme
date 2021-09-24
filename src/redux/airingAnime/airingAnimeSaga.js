@@ -12,7 +12,6 @@ export function* fetchAiringAnimeAsync() {
     yield put(fetchAiringAnimeSuccess(response.data.top));
   } catch (error) {
     yield put(fetchAiringAnimeFailure(error.message));
-    console.log(error);
   }
 }
 

@@ -12,7 +12,6 @@ export function* fetchAllTimePopularAnimeAsync() {
     yield put(fetchAllTimePopularAnimeSuccess(response.data.top));
   } catch (error) {
     yield put(fetchAllTimePopularAnimeFailure(error.message));
-    console.log(error);
   }
 }
 

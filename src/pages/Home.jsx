@@ -39,24 +39,28 @@ const Home = ({
         cardListTitle="POPULAR THIS SEASON"
         response={airingAnime.airingAnime}
         loading={airingAnime.loading}
+        error={airingAnime.errorMessage}
         slug="airing"
       />
       <CardList
         cardListTitle="POPULAR UPCOMING"
         response={upcomingAnime.upcomingAnime}
         loading={upcomingAnime.loading}
+        error={upcomingAnime.errorMessage}
         slug="upcoming"
       />
       <CardList
         cardListTitle="ALL TIME POPULAR"
         response={allTimePopularAnime.allTimePopularAnime}
         loading={allTimePopularAnime.loading}
+        error={allTimePopularAnime.errorMessage}
         slug="tv"
       />
       <CardList
         cardListTitle="POPULAR ANIME MOVIE"
         response={popularAnimeMovie.popularAnimeMovie}
         loading={popularAnimeMovie.loading}
+        error={popularAnimeMovie.errorMessage}
         slug="movie"
       />
     </>

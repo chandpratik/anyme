@@ -12,7 +12,6 @@ export function* fetchUpcomingAnimeAsync() {
     yield put(fetchUpcomingAnimeSuccess(response.data.top));
   } catch (error) {
     yield put(fetchUpcomingAnimeFailure(error.message));
-    console.log(error);
   }
 }
 
