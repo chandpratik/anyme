@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 
 import './SearchBar.css';
@@ -16,15 +17,23 @@ import {
 } from '../../redux/searchParams/searchParamsActions';
 import { SearchParam } from '../SearchParam';
 
-export const SearchBar = ({ setSearchResults, setLoading }) => {
+export const SearchBar = () => {
   const genre = useSelector(state => state.searchParam.genre);
   const orderBy = useSelector(state => state.searchParam.orderBy);
   const sortBy = useSelector(state => state.searchParam.sortBy);
   const rating = useSelector(state => state.searchParam.rating);
 
+  let history = useHistory();
+
   const dispatch = useDispatch();
 
   const [input, setInput] = useState('');
+
+  const QUERY = `search/anime?q=${input}&page=1${
+    genre.queryParam !== '' ? `&genre=${genre.queryParam}` : ''
+  }${orderBy.queryParam !== '' ? `&order_by=${orderBy.queryParam}` : ''}${
+    sortBy.queryParam !== '' ? `&sort=${sortBy.queryParam}` : ''
+  }${rating.queryParam !== '' ? `&rated=${rating.queryParam}` : ''}`;
 
   const handleClick = (value, queryParam, action) => {
     dispatch(action(value, queryParam));
@@ -36,22 +45,7 @@ export const SearchBar = ({ setSearchResults, setLoading }) => {
   };
 
   const handleSubmit = async () => {
-    try {
-      setLoading(true);
-      const response = await fetch(
-        `https://api.jikan.moe/v3/search/anime?q=${input}&page=1${
-          genre.queryParam !== '' ? `&genre=${genre.queryParam}` : ''
-        }${orderBy.queryParam !== '' ? `&order_by=${orderBy.queryParam}` : ''}${
-          sortBy.queryParam !== '' ? `&sort=${sortBy.queryParam}` : ''
-        }${rating.queryParam !== '' ? `&rated=${rating.queryParam}` : ''}`
-      );
-      const { results: data } = await response.json();
-      console.log(data);
-      setSearchResults(data);
-      setLoading(false);
-    } catch (error) {
-      console.log(error);
-    }
+    history.push(`/${QUERY}`);
   };
 
   return (
