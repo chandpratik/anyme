@@ -14,3 +14,16 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
+
+.error-box {
+  width: 100vw;
+  height: 80vh;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.error-box p {
+  font-size: 1.5rem;
+}

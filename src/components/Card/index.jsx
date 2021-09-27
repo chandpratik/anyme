@@ -14,7 +14,6 @@ export const Card = ({ title, image_url, id }) => {
       <div className="card-image-container">
         <img src={image_url} alt="poster" />
       </div>
-
       <p className="card-title">{title}</p>
     </div>
   );

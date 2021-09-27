@@ -1,19 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Card } from '../Card';
+import { CardSkeleton } from '../CardSkeleton';
 import './CardList.css';
 
 export const CardList = ({ cardListTitle, response, slug, loading, error }) => {
-  if (loading) {
-    return <h1>loading</h1>;
-  }
-  if (error) {
-    return (
-      <div>
-        <h1>{error}</h1>
-      </div>
-    );
-  }
   return (
     <div className="cardlist-outer-container">
       <div className="cardlist-header">
@@ -21,7 +12,14 @@ export const CardList = ({ cardListTitle, response, slug, loading, error }) => {
         <Link to={`/popular/${slug}`}>View all</Link>
       </div>
       <div className="cardlist-inner-container">
-        {response &&
+        {loading ? (
+          [1, 2, 3, 4, 5].map(() => <CardSkeleton />)
+        ) : error ? (
+          <div>
+            <h1>{error}</h1>
+          </div>
+        ) : (
+          response &&
           response
             .filter((_, idx) => idx < 5)
             .map(({ title, image_url, mal_id }) => (
@@ -31,7 +29,8 @@ export const CardList = ({ cardListTitle, response, slug, loading, error }) => {
                 image_url={image_url}
                 id={mal_id}
               />
-            ))}
+            ))
+        )}
       </div>
     </div>
   );

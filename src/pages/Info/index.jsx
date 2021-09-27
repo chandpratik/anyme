@@ -1,13 +1,14 @@
 import React from 'react';
 import './Info.css';
 import useFetch from '../../hooks/useFetch';
+import { Spinner } from '../../components/Spinner';
 
 export const Info = ({ match }) => {
   const { response, loading, error } = useFetch(
     `https://api.jikan.moe/v3/anime/${match.params.id}`,
     true
   );
-  if (loading) return <h1>Loading</h1>;
+  if (loading) return <Spinner />;
   if (error)
     return (
       <div>

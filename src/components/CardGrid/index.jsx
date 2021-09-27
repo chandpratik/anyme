@@ -1,14 +1,15 @@
 import React from 'react';
 import { Card } from '../Card';
+import { Spinner } from '../Spinner';
 
 import './CardGrid.css';
 
 export const CardGrid = ({ response, loading, cardListTitle, error }) => {
-  if (loading) return <h1>Loading</h1>;
+  if (loading) return <Spinner />;
   if (error)
     return (
-      <div>
-        <h1>{error}</h1>
+      <div className="error-box">
+        <p>{error}</p>
       </div>
     );
   return (

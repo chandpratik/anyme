@@ -1,0 +1,27 @@
+.card-skeleton {
+  padding: 0.5rem 1rem;
+}
+
+.card-image-skeleton {
+  width: 185px;
+  height: 265px;
+  margin-bottom: 5px;
+  background: #dddbdd;
+  animation: loading-skeleton 1s linear infinite alternate;
+}
+
+.card-title-skeleton {
+  width: 185px;
+  height: 16px;
+  background: #dddbdd;
+  animation: loading-skeleton 1s linear infinite alternate;
+}
+
+@keyframes loading-skeleton {
+  0% {
+    background-color: #939393;
+  }
+  100% {
+    background-color: #dddbdd;
+  }
+}
