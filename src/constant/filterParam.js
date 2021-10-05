@@ -295,22 +295,7 @@ export const ratingParam = [
   },
   {
     id: 3,
-    value: 'pg13',
+    value: 'PG-13',
     queryParam: 'PG-13',
-  },
-  {
-    id: 4,
-    value: 'r17',
-    queryParam: 'R',
-  },
-  {
-    id: 5,
-    value: 'R',
-    queryParam: 'R+',
-  },
-  {
-    id: 6,
-    value: 'rx',
-    queryParam: 'Rx',
   },
 ];
