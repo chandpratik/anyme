@@ -27,3 +27,20 @@
   width: 185px;
   word-wrap: break-word;
 }
+
+@media screen and (max-width: 1024px) {
+  .card:nth-child(5) {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .card-image-container {
+    width: 125px;
+    height: 178px;
+  }
+
+  .card-title {
+    width: 125px;
+  }
+}

@@ -25,5 +25,18 @@
 }
 
 .error-box p {
+  padding: 10px 20px;
   font-size: 1.5rem;
+}
+
+@media screen and (max-width: 1024px) {
+  .cardgrid-outer-container {
+    margin: 3rem 4rem;
+  }
+}
+
+@media screen and (max-width: 445px) {
+  .cardgrid-outer-container {
+    margin: 3rem 0rem;
+  }
 }

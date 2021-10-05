@@ -30,3 +30,33 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
 }
+
+@media screen and (max-width: 1024px) {
+  .cardlist-outer-container {
+    margin: 1rem 4rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .cardlist-title {
+    padding-left: 1.3rem;
+  }
+
+  .cardlist-header a {
+    padding: 1.5rem 1.1rem 0 0;
+  }
+}
+
+@media screen and (max-width: 445px) {
+  .cardlist-outer-container {
+    margin: 1rem 0;
+  }
+
+  .cardlist-title {
+    padding-left: 2rem;
+  }
+
+  .cardlist-header a {
+    padding: 1.5rem 1.8rem 0 0;
+  }
+} ;

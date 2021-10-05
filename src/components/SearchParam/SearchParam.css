@@ -37,3 +37,13 @@
 .search-param:hover .search-dropdown {
   display: block;
 }
+
+@media screen and (max-width: 1024px) {
+  .search-dropdown {
+    width: 122px;
+  }
+
+  .search-param-input {
+    width: 125px;
+  }
+}

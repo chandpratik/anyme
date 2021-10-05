@@ -56,3 +56,32 @@
 .info-synopsis-title {
   font-weight: 300;
 }
+
+@media screen and (max-width: 1024px) {
+  .info-outer-container {
+    margin: 4rem 2rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .info-inner-container {
+    display: block;
+    text-align: center;
+  }
+
+  .info-outer-container {
+    margin: 4rem 1rem;
+  }
+
+  .info-image-container {
+    margin: 0 auto;
+  }
+
+  .info-title {
+    width: 250px;
+  }
+
+  .info-synopsis {
+    width: 90%;
+  }
+} ;

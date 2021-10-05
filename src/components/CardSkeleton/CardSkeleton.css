@@ -25,3 +25,21 @@
     background-color: #dddbdd;
   }
 }
+
+@media screen and (max-width: 1024px) {
+  .card-skeleton:nth-child(5) {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .card-image-skeleton {
+    width: 125px;
+    height: 178px;
+  }
+
+  .card-title-skeleton {
+    width: 125px;
+    height: 10px;
+  }
+}
