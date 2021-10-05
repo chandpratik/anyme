@@ -8,8 +8,8 @@ import store from './redux/store';
 function App() {
   return (
     <Provider store={store}>
-      <Header />
       <Router>
+        <Header />
         <Route exact path="/" component={Home} />
         <Route exact path="/popular/:type" component={Popular} />
         <Route exact path="/anime/:id/:title" component={Info} />
