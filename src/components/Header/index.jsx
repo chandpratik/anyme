@@ -10,8 +10,8 @@ export const Header = () => {
   };
 
   return (
-    <div className="header" onClick={handleClick}>
-      <h1>Anyme</h1>
+    <div className="app-header" onClick={handleClick}>
+      <h1 className="app-header-title">Anyme</h1>
     </div>
   );
 };
