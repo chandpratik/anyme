@@ -10,8 +10,10 @@ export const Header = () => {
   };
 
   return (
-    <div className="app-header" onClick={handleClick}>
-      <h1 className="app-header-title">Anyme</h1>
+    <div className="app-header">
+      <h1 className="app-header-title" onClick={handleClick}>
+        Anyme
+      </h1>
     </div>
   );
 };
